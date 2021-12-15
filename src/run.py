@@ -10,10 +10,13 @@ def main():
     for i in range(10):
         bandits.append(bandit.Arm(probs[i]))
     
-    score = optimistic_greedy.solve(bandits)
+    score, learned_probs = optimistic_greedy.solve(bandits)
     print("Total Score: {}".format(score))
     for i, arm in enumerate(bandits):
-        print("Arm {} was pulled {} times".format(i, arm.n))
+        print("Arm {} was pulled {} times. It's prob is {:.2f} and we learned {:.2f}".format(i, arm.n, probs[i], learned_probs[i]))
+    
+    # TODO: run a solution multiple times to gather mean and standard deviation
+    # TODO: plot the mean with fill_between using (mean-std, mean+std)
 
 if __name__ == '__main__':
     main()

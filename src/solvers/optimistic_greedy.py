@@ -15,5 +15,5 @@ def solve(bandits, max_iters=100):
         n = bandits[arm].n
         probs[arm] = (float(n) / (n+1)) * probs[arm] + (1. / (n+1)) * reward
     
-    return total_reward
+    return total_reward, probs
 
